@@ -1,16 +1,48 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :new, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :new, :update, :destroy, :show_messages]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
   def index
+    puts "--- inde index with params: #{params.inspect}"
+    if params[:category].present?
+      @items = Item.where(category: params[:category])
+    else
+      @items = Item.all
+    end
+
+    session[:conversations] ||= []
+
+    @users = User.all.where.not(id: current_user)
+    @conversations = Conversation.includes(:recipient, :messages).find(session[:conversations])
+  end
+
+  def show_messages
     @items = Item.all
+
+    session[:conversations] ||= []
+
+    @users = User.all.where.not(id: current_user)
+    @conversations = Conversation.includes(:recipient, :messages).find(session[:conversations])
+  end
+
+
+
+  def manage_items
+    @my_items = Item.where(user_id: current_user.id)
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    if !@booking.present?
+      @booking = @item.bookings.new
+    end
+    @reviews = @item.reviews.includes(:user).all
+    @review  = @item.reviews.build(user_id: current_user.id) if current_user
+    @review.user = current_user
+    @review.user_id = current_user.id
   end
 
   # GET /items/new
@@ -45,13 +77,18 @@ class ItemsController < ApplicationController
     @item.user = current_user
     @item.user_id = current_user.id
     respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+       if is_liking?
+         # Toggle whether this photo is liked by the current user
+         @item.toggle_liked_by(current_user)
+         format.html { redirect_to @item }
+         format.json { render :show, status: :ok, location: @item }
+       elsif @item.update(item_params)
+         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+         format.json { render :show, status: :ok, location: @item }
+       else
+         format.html { render :edit }
+         format.json { render json: @item.errors, status: :unprocessable_entity }
+       end
     end
   end
 
@@ -74,5 +111,10 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:name, :price, :description, :category, :image, :user_id)
+    end
+
+    def is_liking?
+       # Is there a `liked` field in the form?
+      params.require(:item)[:liked].present?
     end
 end

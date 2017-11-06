@@ -1,0 +1,111 @@
+<%= form_for([@item, @booking]) do |f| %>
+
+	<!-- <div class="row">
+		<div class="col-md-6">
+			<label>Check In</label>
+			<%#= f.text_field :start_date, placeholder: 'Start Date', class: 'form-control', readonly: 'true' %>
+		</div>
+		<div class="col-md-6">
+			<label>Check Out</label>
+			<%#= f.text_field :end_date, placeholder: 'End Date', class: 'form-control', disabled: 'true', readonly: 'true'  %>
+		</div>
+	</div> -->
+
+
+
+	<br>
+	 <%= f.label :From %>
+	 <%= f.date_field :start_date, data:{ provide:'datepicker' } %>
+	 <br>
+	 <%= f.label :To %>
+	<%= f.date_field :end_date, data:{ provide:'datepicker' } %>
+
+	<br>
+
+	<%= f.hidden_field :item_id, value: @item.id %>
+	<%= f.hidden_field :amount, value: @item.price %>
+
+	<div id="preview" style = "display:none;">
+		<h4><span id="message"></span></h4>
+		<table class = "reservation-table">
+			<tbody>
+				<tr>
+					<td>Day(s)</td>
+					<td><span id="reservation_days"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<br/>
+	<%# if @item.bookings != NIL %>
+	<%#= @item.bookings.where(id: NIL).inspect %>
+	<%# if @item.bookings.where(user_id: current_user.id) != NIL %>
+	<% if @temp == TRUE %>
+		<%= f.submit "Confirm Payment", class: "btn btn-primary" %>
+		<%= f.submit "Cancel Booking", class: "btn btn-primary" %>
+	<% else %>
+		<%= f.submit "Book", class: "btn btn-primary" %>
+	<% end %>
+
+
+	<%# else %>
+
+	<%# end %>
+<% end %>
+
+<!-- <script type="text/javascript">
+ 	$(function(){
+ 		$('#booking_start_date').datepicker({
+ 			dateFormat: 'dd-mm-yy'
+ 		});
+
+ 		$('#booking_end_date').datepicker({
+ 			dateFormat: 'dd-mm-yy'
+ 		});
+ 	});
+ </script>
+
+<script>
+	function unavailable(date) {
+		dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+		return [$.inArray(dmy, unavailableDates) == -1];
+	}
+	$(function() {
+		unavailableDates = [];
+		$.ajax({
+			url: '/preload',
+			data: {'item_id': <%= @item.id %>},
+			dataType: 'json',
+			success: function(data) {
+				$.each(data, function(arrID, arrValue) {
+					for(var d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate() + 1)) {
+						console.log(d);
+						unavailableDates.push($.datepicker.formatDate('dd-mm-yy', d));
+					};
+				});
+				console.log(unavailableDates);
+				$('#booking_start_date').datepicker({
+					dateFormat: 'dd-mm-yy',
+					minDate: 0,
+					maxDate: '3m',
+					beforeShowDay: unavailable,
+					onSelect: function(selected) {
+						$('#booking_end_date').datepicker("option", "minDate", selected);
+						$('#booking_end_date').attr('disabled', false);
+					}
+				});
+				$('#booking_end_date').datepicker({
+					dateFormat: 'dd-mm-yy',
+					minDate: 0,
+					maxDate: '3m',
+					beforeShowDay: unavailable,
+					onSelect: function(selected) {
+						$('#booking_start_date').datepicker("option", "maxDate", selected);
+					}
+				});
+			}
+		});
+
+	});
+</script> -->

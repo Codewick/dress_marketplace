@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @booking.user.profile.first_name %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @booking.item.name %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @booking.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @booking.end_date %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @booking.amount %>
+</p>
+
+<% if @booking.has_paid == TRUE %>
+<%= form_tag charges_path do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span></span>
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description= <%= @booking.item %>
+            data-amount = <%= @booking.amount * 100 %>
+            data-locale="auto"></script>
+<% end %>
+<% end %>
+
+<%= link_to 'Pay,Edit', edit_item_booking_path(@item,@booking) %>
+<%#= link_to 'Edit', edit_booking_path(@booking) %> |
+<%#= link_to 'Back', bookings_path %>

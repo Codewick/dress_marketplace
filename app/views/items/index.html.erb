@@ -21,9 +21,11 @@
         <td>$<%= item.price %></td>
         <td><%= item.description %></td>
         <td><%= item.category %></td>
+        <!-- Like button -->
+
         <td><p>
           <%= link_to item_path(item) do %>
-            <img src="<%= item.image_url %>"></img>
+            <img src="<%= item.image_url %>" height="500" width="500"></img>
           <% end %>
           </p>
         </td>
@@ -36,8 +38,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<% if user_signed_in? %>
-  <%= link_to 'New Item', new_item_path %>
-<% end %>

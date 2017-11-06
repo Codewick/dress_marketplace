@@ -1,0 +1,86 @@
+<%= form_with(model: profile, local: true) do |form| %>
+<% if profile.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+  <ul>
+    <% profile.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<section class="fdb-block">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+
+        <div class="row align-items-center">
+          <div class="col mt-4">
+            <label>First Name</label>
+            <%= form.text_field :first_name, id: :profile_first_name, :class => "form-control", :placeholder => "First Name" %>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col mt-4">
+            <label>Last Name</label>
+            <%= form.text_field :last_name, id: :profile_last_name, :class => "form-control", :placeholder => "Last Name" %>
+          </div>
+        </div>
+
+
+        <div class="row align-items-center">
+          <div class="col mt-4">
+            <label>Street</label>
+            <%= form.text_field :address, id: :profile_address, :class => "form-control", :placeholder => "Street"  %>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col mt-4">
+            <label>City</label>
+            <%= form.text_field :city, id: :profile_city, :class => "form-control", :placeholder => "City" %>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col mt-4">
+            <label>State</label>
+            <%= form.text_field :state, id: :profile_state, :class => "form-control", :placeholder => "State" %>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col mt-4">
+            <label>Post-code</label>
+            <%= form.number_field :post_code, id: :profile_post_code, :class => "form-control", :placeholder => "Post-code" %>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col mt-4 img-circle">
+              <label> Choose Image</label>
+              <%= form.file_field :image, id: :profile_image %>
+            </div>
+          </div>
+
+        <div class="field">
+          <%= form.hidden_field :longitude, id: :profile_longitude %>
+        </div>
+
+        <div class="field">
+          <%= form.hidden_field :latitude, id: :profile_latitude %>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+              <button class="btn">Submit</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>

@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ 
  */
 
  @import "bootstrap";
@@ -32,7 +33,41 @@
 
 @import "home.scss";
 // @import "design-block/froala_blocks.scss";
+@import 'jquery.ui.all';
 
+
+.img-circle {
+    border-radius: 50%;
+}
+.messages-list {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.message-sent {
+  position: relative;
+  background-color: #D9EDF7;
+  border-color: #BCE8F1;
+  margin: 5px 20px;
+  padding: 10px;
+  float: right;
+}
+
+
+.message-received {
+  background-color: #F1F0F0;
+  border-color: #EEEEEE;
+  margin: 5px 20px;
+  padding: 10px;
+  float: left;
+}
+
+ul {
+  padding-left: 0px;
+  list-style: none;
+}
 
 .logo {
 	width: 50px;
