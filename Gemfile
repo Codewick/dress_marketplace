@@ -4,6 +4,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+gem 'aws-sdk'
+gem 'rails_12factor', group: :production
 gem 'bootstrap', '~> 4.0.0.beta'
 gem "shrine"
 gem 'devise'

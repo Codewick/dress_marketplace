@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
       @items = Item.where(category: params[:category])
     elsif params[:search]
        @items = Item.search(params[:search]).order("created_at DESC")
-          
+
     else
       @items = Item.all
     end
@@ -22,6 +22,10 @@ class ItemsController < ApplicationController
 
     @search = Item.search(params[:q])
     @items = @search.result
+
+    s3 = Aws::S3::Resource.new(region: 'us-east-1')
+   @bucket = s3.bucket('sakshi-bucket')
+
   end
 
   def show_messages
