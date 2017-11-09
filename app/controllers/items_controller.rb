@@ -23,8 +23,8 @@ class ItemsController < ApplicationController
     @search = Item.search(params[:q])
     @items = @search.result
 
-    s3 = Aws::S3::Resource.new(region: 'us-east-1')
-   @bucket = s3.bucket('sakshi-bucket')
+  #   s3 = Aws::S3::Resource.new(region: 'us-east-1')
+  #  @bucket = s3.bucket('sakshi-bucket')
 
   end
 
