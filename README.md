@@ -1,14 +1,14 @@
-### Term2 Final Project
+# Term2 Final Project
 
 
-### Challenge
+## Challenge
 
 To build a complete online marketplace application from design through to deployment, using appropriate tools and methodologies.
 
 The deployed webpage can be found on Heroku  : https://dresso-marketplace.herokuapp.com
 
 
-### Technology Stack
+## Technology Stack
 
 Front-end
 
@@ -18,7 +18,7 @@ Back-end
 
 * Ruby on Rails
 
-### Business problem
+## Business problem
 
 * To make designer wear accessible to more women
 * Hundreds of dollars are spent on dresses that are worn rarely or in most cases just once
@@ -36,27 +36,28 @@ Building a marketplace where women can :
 ### Wireframes
 
 Homepage
+![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/img.png)
 ![](images/home.png)
 
 Items page
-![](images/items_page.png)
+![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/items_page.png)
 
 Booking page
-![](images/profile_page.png)
+![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/profile_page.png)
 
 
 ### Entity Relationship Diagram
 
-![](images/erd.png)
+![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/erd.png)
 
 ### User-Flow Diagram
 
-![](images/Ufd.png)
+![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/Ufd.png)
 
 ### Design Guide
 
 moodboard
-![](images/mood_dresso.png)
+![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/mood_dresso.png)
 
 ## Colour
 
