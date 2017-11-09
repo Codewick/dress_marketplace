@@ -29,35 +29,35 @@ Building a marketplace where women can :
 * Post dresses they want to rent out
 * Rent a dress
 
-### User Stories
+## User Stories
 
 * Trello: https://trello.com/b/0QAxDmIx/dresso
 
-### Wireframes
+## Wireframes
 
 Homepage
-![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/img.png)
+![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/img.png)
 ![](images/home.png)
 
 Items page
-![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/items_page.png)
+![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/items_page.png)
 
 Booking page
-![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/profile_page.png)
+![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/profile_page.png)
 
 
-### Entity Relationship Diagram
+## Entity Relationship Diagram
 
-![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/erd.png)
+![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/erd.png)
 
-### User-Flow Diagram
+## User-Flow Diagram
 
-![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/Ufd.png)
+![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/Ufd.png)
 
-### Design Guide
+## Design Guide
 
 moodboard
-![alt text](https://github.com/Codewick/dress_marketplace/tree/master/app/assets/images/mood_dresso.png)
+![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/mood_dresso.png)
 
 ## Colour
 
