@@ -36,8 +36,11 @@ Building a marketplace where women can :
 ## Wireframes
 
 Homepage
+[[https://github.com/username/repository/blob/master/img/octocat.png|alt=octocat]]
 ![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/img.png)
 ![](images/home.png)
+[[https://github.com/Codewick/dress_marketplace/blob/master/app/assets/images/home.png|alt=home]]
+https://github.com/Codewick/dress_marketplace/blob/master/app/assets/images/home.png
 
 Items page
 ![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/items_page.png)
