@@ -1,85 +1,89 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @item.category %>
-</p>
-
-
-<p>
-  <img src="<%= @item.image_url %>" class="img-fluid br-0">
-</p>
-<p><%= form_with(model: @item, method: :patch) do |f| %>
-  <% liked = @item.liked_by?(current_user) %>
-  <%= f.hidden_field :liked, value: liked %>
-  <%#= f.button liked ? 'Unlike' : 'Like' %>
-  <%= f.button liked ? fa_icon("heart") : fa_icon("heart-o") %>
-  <%#= f.button liked ? :type => :image :src => image_path("logo.png") : :type => :image :src => image_path("logo.png")%>
-<% end %></p>
-
-
- <% @users = User.where(id: [@item.likers.ids]) %>
-
-<% if @users != NIL %>
-Loved by
-  <% @users.each do |user| %>
-     <%= user.profile.first_name %>,
-  <% end %>
-<% end %>
-<br>
-<% if current_user != NIL %>
-  <% if @item.user_id == current_user.id %>
-
-  <% else %>
-    <%= link_to 'Contact Owner', messages_path %>
-  <% end %>
-<% end %>
-
-<% if current_user == NIL %>
-  <%= link_to 'Contact Owner', messages_path %>
-<% end %>
-
-<div class="col-md-4">
-				<!-- Reservation form -->
-	<%= render 'bookings/form' %>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 </div>
+<div class="row justify-content-around">
+    <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
+      <div class="item-details">
+        <div class="item-name">
+          <%= @item.name %><br>
+        </div>
+        <%= @item.description %><br>
+        SIZE M ><br>
+        <%= @item.price %> to rent,  <p id="strikethrough">$150 </p>retail
+      </div>
+      <% posted_by_user = Profile.find_by_id(@item.user_id) %>
+
+      <p id="grey-out">Posted on <%= @item.created_at.strftime("%d-%B") %> by
+      <%= link_to posted_by_user.first_name, profile_path(@item.user_id), class: 'text-info' %></p>
+
+      <% if current_user != NIL %>
+        <% if @item.user_id == current_user.id %>
+
+        <% else %>
+          <%= link_to 'Contact Owner', messages_path, style: 'color: #008798' %>
+        <% end %>
+      <% end %>
+
+      <% if current_user == NIL %>
+        <%= link_to 'Contact Owner', messages_path %>
+      <% end %>
+
+      <div class="col-md-4">
+      				<!-- Reservation form -->
+      	<%= render 'bookings/form' %>
+      </div>
+
+      <br>
 
 
-
-<br>
-<% if user_signed_in? && @item.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_item_path(@item) %> |
-<% end %>
-<%= link_to 'Back', items_path %>
+      <div class="mb-4">
+        <h3 id="grey-out">Reviews</h3>
+      </div>
+        <% @reviews.each do |review| %>
 
 
-  <h3>Reviews</h3>
-  <% @reviews.each do |review| %>
+            <img src="<%= review.user.profile.image_url %>" class='img-circle' width="70" height="70">
+            <%= review.user.profile.first_name %>
+            <p id="grey-out"><%= review.created_at.strftime("%d-%B") %></p>
+            <td><%= review.content %></td>
+          <br>
+          <hr>
+          <%#= link_to 'x', items_review_path,method: :delete%><br>
 
-    <div class="content">
-      <img src="<%= review.user.profile.image_url %>" class='img-circle' width="75" height="75">
-      <%= review.user.profile.first_name %> :
-    <td><%= review.content %></td>
-    <br>
-    <%#= link_to 'x', items_review_path,method: :delete%><br>
 
-  </div>
-  <% end %>
-  <div class="row">
-    <%= render 'reviews/form' %>
+        <% end %>
+        <div class="row">
+          <%= render 'reviews/form' %>
+        </div>
+
+    </div>
+    <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12">
+      <img src="<%= @item.image_url %>" class="img-fluid br-0">
+      <p><%= form_with(model: @item, method: :patch) do |f| %>
+        <% liked = @item.liked_by?(current_user) %>
+        <%= f.hidden_field :liked, value: liked %>
+        <%#= f.button liked ? 'Unlike' : 'Like' %>
+        <%= f.button liked ? fa_icon("heart") : fa_icon("heart-o") %>
+        <%#= f.button liked ? :type => :image :src => image_path("logo.png") : :type => :image :src => image_path("logo.png")%>
+      <% end %></p>
+
+
+       <% @users = User.where(id: [@item.likers.ids]) %>
+
+      <% if @users != NIL %>
+      Loved by
+        <% @users.each do |user| %>
+           <%= user.profile.first_name %>,
+        <% end %>
+      <% end %>
+      <br>
+      <div class="row justify-content-end">
+        <div class="col-lg-3 col-md-2 col-sm-4 col-xs-4 ">
+          <% if user_signed_in? && @item.user_id == current_user.id %>
+            <%= link_to 'Edit', edit_item_path(@item) %> |
+          <% end %>
+          <%= link_to 'Back', items_path %>
+        </div>
+      </div>
+    </div>
   </div>

@@ -10,6 +10,15 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    user_id = @profile.user_id
+    @my_items = Item.where(user_id: user_id)
+
+    my_likes = Like.where(user_id: user_id)
+    puts my_likes.inspect
+    item_array = my_likes.pluck(:item_id)
+    puts item_array.inspect
+    @my_liked_items = Item.where(id: [item_array])
+    puts @my_liked_items.inspect
   end
 
   # GET /profiles/new

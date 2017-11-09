@@ -1,84 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DressMarketplace</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>DressMarketplace</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400" rel="stylesheet">
+</head>
 
-  <body>
+<body>
+  <header>
+
     <div class="container">
-    <header>
-     <nav class="navbar navbar-expand-lg bg-dark">
-       <a class="navbar-brand" href="">
-        <%= link_to(image_tag("logo.png", height: '25', width: '25'), root_path) %>
-       </a>
-          <div class="collapse navbar-collapse" id="navbarNav5">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <!-- <div class="dropdown">
-                   <button class="btn btn-light dropdown-toggle user-profile ml-5" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="fa fa-filter"></span>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
-                      <%= form_with url: items_path, method: :get, local: true do |f| %>
-                        <div class='form-group btn btn-light dropdown-toggle user-profile ml-5" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"'>
-                          <%= f.select :category, StaticData::Constants::DRESS_CATEGORIES, {prompt: 'Select Category'}, { value: '', class: 'form-control', onchange: 'this.form.submit();' } %>
-                        </div>
-                      <% end %>
-                      <!-- </div>
-                     </button>
-                  </div> -->
-            </li>
-<!--
 
-              <li class="nav-item">
-                <%#= link_to('Products', edit_user_registration_path, :class => "nav-link text-white")  %>
-              </li> -->
+      <nav class="navbar navbar-expand-lg navbar-inverse">
+        <a href="">
+          <%= link_to(image_tag("dresso.png", height: '60', width: '60'), root_path) %>
+        </a>
+        <p class="logo">DRESSO</p>
+        <!-- <div class="collapse navbar-collapse navbar-expand-lg navbar-inverse" id="navbarNav5"> -->
 
-              <!-- <li class="nav-item">
-               <%#= text_field_tag :search, params[:search], placeholder: "Search Products", class: "form-control" %>
-               <%# end %>
-              </li> -->
-            </ul>
-            <ul class="navbar-nav justify-content-end ml-auto">
-             <li class="nav-item">
+          <ul class="navbar-nav justify-content-end ml-auto navbar-expand-lg navbar-inverse">
+            <li class="nav-item menu-item">
               <%= render 'devise/login_items' %>
-             </li>
-             <li class="nav-item">
+            </li>
+            <li class="nav-item menu-item">
               <%= render 'devise/registration_items' %>
-             </li>
-             <li class="nav-item">
-             <% if user_signed_in? %>
-               <div class="dropdown">
-                  <button class="btn btn-light dropdown-toggle user-profile ml-5" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   <span class="fa fa-user"></span>
-                  </button>
-                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                   <%= link_to('Home', root_path, :class => "nav-link dropdown-item")  %>
-                   <%= link_to('New Listing', new_item_path, :class => "nav-link dropdown-item")  %>
-                   <%= link_to('Manage Listing', manage_items_path, :class => "nav-link dropdown-item")  %>
-                   <%= link_to('Messages', messages_path, :class => "nav-link dropdown-item")  %>
-                   <%= link_to('Purchase History', edit_user_registration_path, :class => "nav-link dropdown-item")  %>
-                   <%= link_to('Sales History', edit_user_registration_path, :class => "nav-link dropdown-item")  %>
-                   <% if current_user.profile != NIL %>
-                      <%= link_to('Profile', profile_path(current_user.id), :class => "nav-link dropdown-item")  %>
-                    <% else %>
-                      <%= link_to('Profile', new_profile_path(current_user.id), :class => "nav-link dropdown-item")  %>
-                    <% end %>
-                   <%= link_to('Sign Out', destroy_user_session_path, method: :delete, :class => "nav-link dropdown-item")  %>
-                 </div>
-               </div>
-             <% end %>
-           </li>
-         </ul>
-       </div>
-     </nav>
+            </li>
+            <li class="nav-item menu-item navbar-expand-lg navbar-inverse">
+              <% if user_signed_in? %>
 
-   </header>
-    <%= yield %>
-  </div>
-  </body>
+              <div class="dropdown navbar-expand-lg navbar-inverse">
+
+                <button class="btn dropdown-toggle fa fa-user ml-2 button-white navbar-expand-lg navbar-inverse" type="button" data-toggle="dropdown">
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu navbar-expand-lg navbar-inverse">
+                  <%= link_to('Home', root_path, :class => "nav-link")  %>
+                  <%= link_to('New Listing', new_item_path, :class => "nav-link")  %>
+                  <%= link_to('Manage Listing', manage_items_path, :class => "nav-link dropdown-item")  %>
+                  <%= link_to('Messages', messages_path, :class => "nav-link")  %>
+                  <%#= link_to('Rental History', edit_user_registration_path, :class => "nav-link")  %>
+                  <% if current_user.profile.present? %>
+                  <%= link_to('Profile', profile_path(current_user.id), :class => "nav-link")  %>
+                  <% else %>
+                  <%= link_to('Profile', new_profile_path(current_user.id), :class => "nav-link")  %>
+                  <% end %>
+                  <%= link_to('Sign Out', destroy_user_session_path, method: :delete, :class => "nav-link")  %>
+                </ul>
+              </div>
+              <% end %>
+            </li>
+          </ul>
+
+        <!-- </div> -->
+      </nav>
+
+
+    </div>
+
+
+  </header>
+  <%= yield(:search) %>
+  <%= yield %>
+  <%= render :partial => "partials/footer" %>
+
+
+</body>
 </html>

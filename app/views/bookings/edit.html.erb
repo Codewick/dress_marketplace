@@ -1,6 +1,7 @@
-<h1>Editing Booking</h1>
-<% @temp = TRUE %>
-<%= render 'form', booking: @booking %>
-
+<div class="container">
+  <p id="notice">You have booked the dress successfully. Please contact owner to fix a time for trial or directly proceed with payment</p>
+  <% @temp = TRUE %>
+  <%= render 'form', booking: @booking %>
+</div>
 <%# @booking.has_paid = TRUE %>
 <%# @booking.save() %>

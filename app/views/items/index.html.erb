@@ -1,40 +1,74 @@
-<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="">
+    <% content_for :search do %>
+    <form class="form-inline mt-5 ml-5">
+      <%= search_form_for @search do |f| %>
+
+        <div class="col-1.5 ml-5 form-style">
+          <%#= f.select :price_gteq, [0,10,20,30,40,50,100], {prompt: 'Select Min Price'}, {class: "custom-select form-control col-3 mx-auto", id: "inlineFormCustomSelect" %>
+          <%= f.select :price_gt, [0,10,20,30,40,50,100], {prompt: 'Select Min Price'}, { value: '', class: 'form-control ml-5', placeholder: "Minimum  Price" } %>
+
+        </div>
+        <%#= f.text_field :price_lteq, class: "form-control col-3 mr-3", placeholder: "Maximum Price" %>
+        <div class="col-1.5 form-style">
+          <%#= f.select :price_gteq, [0,10,20,30,40,50,100], {prompt: 'Select Min Price'}, {class: "custom-select form-control col-3 mx-auto", id: "inlineFormCustomSelect" %>
+          <%= f.select :price_lteq, [0,10,20,30,40,50,100], {prompt: 'Select Max Price'}, { value: '', class: 'form-control', placeholder: "Maximum Price" } %>
+
+        </div>
+        <div class="col-1.5 form-style">
+        <%= f.select :category_cont, StaticData::Constants::DRESS_CATEGORIES, {prompt: 'Select Category'}, { value: '', class: 'form-control', placeholder: "Category" } %>
+        </div>
+        <%= f.text_field :name_cont, class: "form-control col-2 ", placeholder: "Dress"  %>
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Image data</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td>$<%= item.price %></td>
-        <td><%= item.description %></td>
-        <td><%= item.category %></td>
-        <!-- Like button -->
+        <%#= form_with url: items_path, method: :get, local: true do |f| %>
+          <!-- <div class='form-group btn btn-light dropdown-toggle user-profile ml-5 col-2 input justify-content-end" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"'> -->
+            <%#= f.select :category, StaticData::Constants::DRESS_CATEGORIES, {prompt: 'Select Category'}, { value: '', class: 'form-control', onchange: 'this.form.submit();' } %>
+          <!-- </div> -->
+        <%# end %>
 
-        <td><p>
-          <%= link_to item_path(item) do %>
-            <img src="<%= item.image_url %>" height="500" width="500"></img>
-          <% end %>
-          </p>
-        </td>
-        <td><%= item.user_id %></td>
-        <% if user_signed_in? && item.user_id == current_user.id %>
-          <td><%= link_to 'Edit', edit_item_path(item) %></td>
-          <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+      <% end %>
+    </form>
     <% end %>
-  </tbody>
-</table>
+
+  </div>
+</div>
+
+
+
+
+<div class="container mt-5">
+
+
+      <% content_for :search do %>
+      <div class="container sort form-style mt-1">
+      <h6 style="display: inline"><p style="display: inline">Sort by:</p></h6><%= sort_link @search, :price, "Price" %>
+      <%= sort_link @search, :created_at, "Posted on" %>
+      <%= sort_link @search, :title, "Likes" %>
+      </div>
+      <% end %>
+
+    <div class="row">
+
+      <% @items.each do |item| %>
+      <div class="col-lg 3 col-md-3 col-sm-12 col-xs-12">
+        <div class="card mb-5">
+          <%= link_to item_path(item) do %>
+          <%= image_tag item.image_url , class: "card-img-top img-fluid"%>
+          <% end %>
+          <div class="card-block">
+            <p class="card-text mt-1 ml-1"><%= item.name %></p>
+            <p id="grey-out" class="text-h4 ml-1 mt-0"> $ <%= item.price %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+
+  </div>

@@ -10,9 +10,9 @@
 			<%#= f.text_field :end_date, placeholder: 'End Date', class: 'form-control', disabled: 'true', readonly: 'true'  %>
 		</div>
 	</div> -->
-
-
-
+<%= f.hidden_field :start_date, data:{ provide:'datepicker' } %>
+<%= f.hidden_field :end_date, data:{ provide:'datepicker' } %>
+<% if @temp != TRUE %>
 	<br>
 	 <%= f.label :From %>
 	 <%= f.date_field :start_date, data:{ provide:'datepicker' } %>
@@ -38,16 +38,21 @@
 	</div>
 
 	<br/>
+	<% end %>
 	<%# if @item.bookings != NIL %>
 	<%#= @item.bookings.where(id: NIL).inspect %>
 	<%# if @item.bookings.where(user_id: current_user.id) != NIL %>
 	<% if @temp == TRUE %>
-		<%= f.submit "Confirm Payment", class: "btn btn-primary" %>
-		<%= f.submit "Cancel Booking", class: "btn btn-primary" %>
-	<% else %>
-		<%= f.submit "Book", class: "btn btn-primary" %>
-	<% end %>
 
+		<%= f.submit "Proceed to payment", class: "btn btn-info" %>
+		<%= f.submit "Cancel Booking", class: "btn btn-info" %>
+
+	<% else %>
+		<%= f.submit "Book", class: "btn btn-info" %>
+	<% end %>
+	<br>
+	<br>
+<hr>
 
 	<%# else %>
 

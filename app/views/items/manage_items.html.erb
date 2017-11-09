@@ -1,39 +1,37 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Image data</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
 
-  <tbody>
-    <% @my_items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td>$<%= item.price %></td>
-        <td><%= item.description %></td>
-        <td><%= item.category %></td>
-        <td><p>
-          <%= link_to item_path(item) do %>
-            <img src="<%= item.image_url %>"></img>
-          <% end %>
-          </p>
-        </td>
-        <td><%= item.user_id %></td>
-        <% if user_signed_in? && item.user_id == current_user.id %>
+  <% @my_items.each do |item| %>
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <div class="card mb-5 mt-5">
+      <%= link_to item_path(item) do %>
+      <%= image_tag item.image_url , class: "card-img-top img-fluid"%>
+      <% end %>
+
+      <div class="card-block">
+        <p class="text-h4"><%= item.name %></p>
+        <p class="text-h4 text-primary"> $ <%= item.price %></p>
+      </div>
+      <% if user_signed_in? && item.user_id == current_user.id %>
+      <div class="btn-group">
+        <div class="btn btn-info back-button mr-1">
           <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        </div>
+        <div class="btn btn-info back-button ml-1">
           <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </div>
+      </div>
+
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'Back', items_path %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="btn btn-info back-button ml-1">
+  <%= link_to 'Back', items_path %>
+</div>
+</div>

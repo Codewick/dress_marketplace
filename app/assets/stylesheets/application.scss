@@ -12,20 +12,11 @@
  *
  *= require_tree .
  *= require_self
- 
+
  */
 
  @import "bootstrap";
 
- .navbar.transparent.navbar-inverse .navbar-inner {
-    border-width: 0px;
-    -webkit-box-shadow: 0px 0px;
-    box-shadow: 0px 0px;
-    background-color: rgba(0,0,0,0.0);
-    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
-    background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-    background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-}
 
 @import "bootstrap";
 @import 'font-awesome.css';
@@ -34,7 +25,207 @@
 @import "home.scss";
 // @import "design-block/froala_blocks.scss";
 @import 'jquery.ui.all';
+//
+// .form-filters {
+//   display: inline;
+// }
+//
+// .filters {
+//   margin-left: .5em;
+//   margin-right: .5em;
+// }
 
+
+
+// .card-button {
+//   display: inline-block;
+//   margin-bottom: .5em;
+//   color: white;
+// }
+
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body{
+	// font-family: 'Open Sans', sans-serif;
+  // font-size: 14px;
+  // line-height: 1.5;
+  // color: #24292e;
+  // background-color: #fff;
+  margin: 0;
+  padding-bottom: 10rem;
+  min-height: 100%;
+  position: relative;
+    #wrapper{
+      padding-bottom: 300px;
+    }
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+.card-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+}
+
+.form-style select {
+  color: grey;
+
+}
+
+.form-style sort {
+  color: grey;
+}
+
+.back-button {
+  background-color: #C0C0C0;
+
+}
+.button-white {
+  background-color: white;
+}
+.sort_link {
+  padding-left: .5em;
+}
+
+.sort {
+  margin-left: 9em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+}
+.fa-heart {
+  color: red;
+}
+.input {
+  display: inline-block;
+  float: right;
+  text-align: right;
+  padding-left: 4em;
+}
+.profile-heading {
+  border-bottom: 1px solid #E9E9E9;
+  font-family: 'Roboto', sans-serif;
+}
+#hyperlink {
+  color: teal;
+}
+
+.item-name {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  line-height: 3em;
+}
+.item-details {
+  line-height: 3em;
+}
+#strikethrough {
+text-decoration: line-through;
+display: inline;
+font-size: inherit;
+}
+#grey-out {
+  color: grey;
+
+}
+
+.greeting {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.5em;
+
+}
+
+.card-img-top{
+  // width:100%;
+  height:auto;
+  height: 300px;
+}
+
+
+.navbar {
+  z-index:99999999999 !important;
+  color: grey;
+
+  border-bottom: 1px solid #E9E9E9; /* This is the line replacing the hr*/
+
+}
+.navbar a:hover {
+    background:rgba(0,0,0,0);
+    text-decoration: none;
+    color: grey;
+}
+
+.banner img {
+   width:100%;
+   height:700px;
+   position: relative;
+}
+
+h2 {
+   position: absolute;
+   top: 200px;
+   left: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+   font-family: 'Cinzel';
+   font-size: 4em;
+}
+.img-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+}
+
+.img-overlay:before {
+  content: ' ';
+  display: block;
+  /* adjust 'height' to position overlay content vertically */
+  height: 50%;
+
+}
+.text-colour {
+  color: white;
+}
+
+.btn-success {
+  background-color: #7A6969;
+  border: white 2px;
+  font-family: 'Open Sans', sans-serif;
+  width: 15%;
+  height: 7%;
+  opacity: 0.7;
+
+}
+.btn-success:hover {
+  background-color: teal;
+}
+span{
+  border-bottom:.1em solid #FFF;
+}
+
+.logo {
+  color: #c5c9c6;
+  font-size: 1.3em;
+  padding-left: .5em;
+  padding-top: .6em;
+  font-family: 'Nunito';
+}
 
 .img-circle {
     border-radius: 50%;
@@ -79,9 +270,6 @@ ul {
 	color: #fff;
 }
 
-.product-card{
-	    min-height: 450px;
-}
 .warning {
 	  margin-left: 30%;
       color: #FF0000;
@@ -125,3 +313,7 @@ ul {
 {
 	content: "\f005";
 }
+
+
+
+// footer

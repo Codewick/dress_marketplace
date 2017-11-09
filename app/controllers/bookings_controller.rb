@@ -70,10 +70,10 @@ class BookingsController < ApplicationController
       end
 
       if found == true
-        redirect_to request.referrer, notice: "This dress is already booked in the period you want to book it"
+        redirect_to request.referrer, notice: "This dress is already booked for this period."
       else
         @booking.save!
-        redirect_to item_booking_url(@item,@booking), notice: "You have booked the dress successfully. Please contact owner to fix a time for trial or directly proceed with payment."
+        redirect_to edit_item_booking_url(@item,@booking), notice: "You have booked the dress successfully. Please contact owner to fix a time for trial or directly proceed with payment."
       end
     end
 

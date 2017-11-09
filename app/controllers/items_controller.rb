@@ -8,6 +8,9 @@ class ItemsController < ApplicationController
     puts "--- inde index with params: #{params.inspect}"
     if params[:category].present?
       @items = Item.where(category: params[:category])
+    elsif params[:search]
+       @items = Item.search(params[:search]).order("created_at DESC")
+          
     else
       @items = Item.all
     end
@@ -16,6 +19,9 @@ class ItemsController < ApplicationController
 
     @users = User.all.where.not(id: current_user)
     @conversations = Conversation.includes(:recipient, :messages).find(session[:conversations])
+
+    @search = Item.search(params[:q])
+    @items = @search.result
   end
 
   def show_messages

@@ -1,10 +1,12 @@
-<% if user_signed_in? %>
 
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-  <%#= link_to('My Profile', profile_path) %>
+  <% if user_signed_in? %>
+    <i class="fa fa-sign-out" aria-hidden="true"></i>
+    <!--  -->
+      <%= link_to('SIGN OUT', destroy_user_session_path, method: :delete) %>
+    <%#= link_to('My Profile', profile_path) %>
 
-<% else %>
+  <% else %>
+    <i class="fa fa-sign-in" aria-hidden="true"></i>
+      <%= link_to('Login', new_user_session_path)  %>
 
-  <%= link_to('Login', new_user_session_path)  %>
-
-<% end %>
+  <% end %>
