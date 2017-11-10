@@ -31,7 +31,7 @@ Building a marketplace where women can :
 
 ## User Stories
 
-* Trello: https://trello.com/b/0QAxDmIx/dresso
+ ![trello](https://user-images.githubusercontent.com/27904151/32637747-b597ffee-c60f-11e7-9d20-42fdc5ad5e2b.png)
 
 ## Wireframes
 
@@ -59,8 +59,8 @@ Booking page
 
 ## Design Guide
 
-moodboard
-![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/mood_dresso.png)
+###moodboard
+https://github.com/Codewick/dress_marketplace/blob/master/app/assets/images/mood_dresso.png
 
 ## Colour
 

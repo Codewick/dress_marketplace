@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <body>
@@ -41,7 +42,7 @@
                 <button class="btn dropdown-toggle fa fa-user ml-2 button-white navbar-expand-lg navbar-inverse" type="button" data-toggle="dropdown">
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu navbar-expand-lg navbar-inverse">
-                  <%= link_to('Home', root_path, :class => "nav-link")  %>
+                  <%= link_to('Home', items_path, :class => "nav-link")  %>
                   <%= link_to('Post a dress', new_item_path, :class => "nav-link")  %>
                   <%= link_to('Manage Listing', manage_items_path, :class => "nav-link dropdown-item")  %>
                   <%= link_to('Messages', messages_path, :class => "nav-link")  %>
