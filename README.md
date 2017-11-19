@@ -55,7 +55,7 @@ https://github.com/Codewick/dress_marketplace/blob/master/app/assets/images/prof
 
 ## Design Guide
 
-###moodboard
+## Moodboard
 https://github.com/Codewick/dress_marketplace/blob/master/app/assets/images/mood_dresso.png
 
 ## Colour
