@@ -36,26 +36,22 @@ Building a marketplace where women can :
 ## Wireframes
 
 Homepage
-[[https://github.com/username/repository/blob/master/img/octocat.png|alt=octocat]]
-![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/img.png)
-![](images/home.png)
-[[https://github.com/Codewick/dress_marketplace/blob/master/app/assets/images/home.png|alt=home]]
 https://github.com/Codewick/dress_marketplace/blob/master/app/assets/images/home.png
 
 Items page
-![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/items_page.png)
+https://github.com/Codewick/dress_marketplace/blob/master/app/assets/images/items_page.png
 
-Booking page
-![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/profile_page.png)
+Profile page
+https://github.com/Codewick/dress_marketplace/blob/master/app/assets/images/profile_page.png
 
 
 ## Entity Relationship Diagram
 
-![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/erd.png)
+![erd](https://user-images.githubusercontent.com/27904151/32641922-d937995e-c624-11e7-9e53-ff0e3bb105f9.png)
 
 ## User-Flow Diagram
 
-![alt text](https://raw.github.com/Codewick/dress_marketplace/tree/master/app/assets/images/Ufd.png)
+![screen shot 2017-11-10 at 10 17 27 am](https://user-images.githubusercontent.com/27904151/32641930-eb992860-c624-11e7-9cc7-098808373ffe.png)
 
 ## Design Guide
 
